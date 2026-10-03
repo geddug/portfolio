@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg1: #f5f5f7;
+  --bg2: #ebebee;
+  --line: #e0e0e4;
+  --ink: #0a0a0a;
+  --sub: #55555c;
+  --mute: #75757c;
+  --accent: #4f46e5;
+  --acc: #4338ca;
+  --on-accent: #ffffff;
+  --ok: #1a7f37;
+  --glow: rgb(79 70 229 / 0.18);
+  --shadow-card: 0 1px 2px #0000000a, 0 14px 40px -16px #00000029;
+  --shadow-window: 0 2px 8px #0000000f, 0 50px 120px -34px #0000004d;
+}
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #000000;
+  --bg1: #0e0e10;
+  --bg2: #161618;
+  --line: #222225;
+  --ink: #ffffff;
+  --sub: #a1a1a6;
+  --mute: #7d7d83;
+  --accent: #6366f1;
+  --acc: #8b8ff8;
+  --on-accent: #ffffff;
+  --ok: #3fb950;
+  --glow: rgb(99 102 241 / 0.3);
+  --shadow-card: 0 1px 2px #00000080, 0 14px 40px -14px #000c;
+  --shadow-window: 0 2px 8px #00000080, 0 50px 120px -30px #000000f2;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg1: var(--bg1);
+  --color-bg2: var(--bg2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-sub: var(--sub);
+  --color-mute: var(--mute);
+  --color-accent: var(--accent);
+  --color-acc: var(--acc);
+  --color-onaccent: var(--on-accent);
+  --color-ok: var(--ok);
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --shadow-card: var(--shadow-card);
+  --shadow-window: var(--shadow-window);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.h-display {
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+.h-section {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+/* Reveal custom diganti ke AOS */
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes float {
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
